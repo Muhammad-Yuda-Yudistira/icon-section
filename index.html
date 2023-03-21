@@ -14,38 +14,54 @@
 </head>
 <body>
     <div class="container">
-        <h1>Your icons</h1>
+        <h1>Custom your icons here</h1>
+        <div class="styling">
+            <div class="pilihan-1">
+                <label>Choice your style icons:</label>
+                <select name="styling" class="gaya">
+                    <option value="outline">Outline Style</option>
+                    <option value="color">Color Style</option>
+                </select>
+            <div>
+            <div class="pilihan-2">
+                <label>Choice the color text:</label>
+                <select class="warna">
+                    <option value="white">White</option>
+                    <option value="red">Red</option>
+                </select>
+            </div>
+        </div>
         <section class="icons">
             <ul>
                 <li>
                     <a href="#">
-                        <picture>
+                        <picture data-tilt data-tilt-scale="1.5" data-tilt-glare="true">
                             <img src="imgs/outline/beer.svg">
-                            <figcaption>Beer</figcaption>
+                            <figcaption></figcaption>
                         </picture>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <picture>
+                        <picture data-tilt data-tilt-scale="1.5" data-tilt-glare="true">
                             <img src="imgs/outline/snack.svg">
-                            <figcaption>Snack</figcaption>
+                            <figcaption></figcaption>
                         </picture>
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <picture>
+                    <a href="#">
+                        <picture data-tilt data-tilt-scale="1.5" data-tilt-glare="true">
                             <img src="imgs/outline/note.svg">
-                            <figcaption>Write Note</figcaption>
+                            <figcaption></figcaption>
                         </picture>
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <picture>
+                    <a href="#">
+                        <picture data-tilt data-tilt-scale="1.5" data-tilt-glare="true">
                             <img src="imgs/outline/gift.svg">
-                            <figcaption>Send Gift</figcaption>
+                            <figcaption></figcaption>
                         </picture>
                     </a>
                 </li>
@@ -53,5 +69,10 @@
         </section>
         <footer>&copy Copyright 2016 Beer Bouquet LLC</footer>
     </div>
+
+    <!-- tilt js -->
+    <script type="text/javascript" src="js/vanilla-tilt.min.js"></script>
+    <!-- my script -->
+    <script src="js/script.js"></script>
 </body>
 </html>
