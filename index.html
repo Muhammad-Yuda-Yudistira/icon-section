@@ -14,11 +14,20 @@
 </head>
 <body>
     <div class="container">
+        <nav>
+            <form action="js/login.js">
+                <label for="username">Username</label>
+                <input type="text" id="password">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+                <button type="submit">Login</button>
+            </form>
+        </nav>
         <h1>Custom your icons here</h1>
         <div class="styling">
             <div class="setting">
                 <input type="checkbox" id="3D" onclick="tiluD()">
-                <label for="3D">3D Icons</label>
+                <label for="3D" class="segel">3D Icons</label>
             </div>
             <div class="setting">
                 <input type="checkbox" id="pasFoto" class="pasFoto">
@@ -102,20 +111,27 @@
         </section>
         <footer>&copy Copyright 2016 Beer Bouquet LLC</footer>
 
+        <section class="tiluDIcons">
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+        </section>
+
     </div>
 
     <!-- tilt js -->
     <script type="text/javascript" src="js/vanilla-tilt.min.js"></script>
     <!-- my script -->
     <script src="js/script.js"></script>
-
     <!-- three js -->
     <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
 
     <script type="importmap">
     {
         "imports": {
-        "three": "https://unpkg.com/three@0.150.1/build/three.module.js"
+        "three": "https://unpkg.com/three@0.150.1/build/three.module.js",
+        "controls": "https://unpkg.com/three@0.150.1/examples/jsm/controls/OrbitControls.js"
         }
     }
     </script>
@@ -123,27 +139,42 @@
     <script type="module">
 
     import * as THREE from 'three';
-    import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three-gltf-loader@0.150.0/index.js';
+    import { OrbitControls } from 'controls';
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({alpha: true});
     renderer.setSize( window.innerWidth, window.innerHeight );
-    const tiluDIcons = document.querySelector('.tiluDIcon')
-    tiluDIcons.appendChild( renderer.domElement );
+    const tiluDIcons = document.querySelectorAll(".tiluDIcons .item")
+    for(let i = 0; i < tiluDIcons.length; i++) {
+        tiluDIcons[i].appendChild( renderer.domElement );
+    }
+
+    const controls = new OrbitControls( camera, renderer.domElement );
 
 
     const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+    const material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
     const cube = new THREE.Mesh( geometry, material );
     scene.add( cube );
 
+    const light = new THREE.AmbientLight( 0x404040, 0.5 ); // soft white light
+    scene.add( light );
+
+    const lightDua = new THREE.PointLight( 0xffffff, 1, 100 );
+    lightDua.position.set( 30, 20, 50 );
+    scene.add( lightDua );
+
     camera.position.z = 5;
+    // camera.position.x = 3;
+    // camera.position.y = -2;
 
 
     function animate() {
         requestAnimationFrame( animate );
+        cube.rotation.x += 0.01;
+        cube.rotation.z += 0.01;
         renderer.render( scene, camera );
     }
     animate();

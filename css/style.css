@@ -10,12 +10,17 @@ h1 {
     text-align:center;
     font-family: "Roboto Condensed";
     color: #666;
+    margin: 100px auto 30px;
 }
 img {
     width: 80px;
 }
+nav {
+    text-align: end;
+}
 .container {
-    margin: 100px auto;
+    margin: 0px auto;
+    overflow:hidden;
 }
 .styling {
     display: flex;
@@ -27,6 +32,10 @@ img {
 }
 .setting:first-child {
     background-color: rgba(222, 184, 135, 0.493);
+}
+.setting .segel {
+    font-style: italic;
+    text-decoration: red underline overline line-through wavy;
 }
 .icons {
     height: 50vh;
