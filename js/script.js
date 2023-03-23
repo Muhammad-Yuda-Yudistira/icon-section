@@ -6,8 +6,9 @@ const gaya = document.querySelector('.gaya')
 const warna = document.querySelector('.warna')
 const wujud = document.querySelector('.wujud')
 const mirror = document.querySelector('.mirror')
-const pasFoto = document.querySelector('.icons picture:hover')
 const card = document.querySelectorAll('.icons a')
+const pasFoto = document.querySelector('.pasFoto')
+
 
 // data on variables
 const icons = ['Beer', 'Snack', 'Write Note', 'Send Gift']
@@ -71,6 +72,16 @@ const changeMirror = function(mirror) {
         }
     }
 }
+const useBorder = function() {
+    for(let i =0; i < titles.length; i++) {
+        bingkai[i].onmouseover = function() {
+            bingkai[i].style.border = "3px solid rgba(222, 184, 135, 0.514)"
+        }
+        bingkai[i].onmouseleave = function() {
+            bingkai[i].style.border = "none"
+        }
+    }
+}
 
 // jalankan pilih style icons
 gaya.addEventListener('change', function() {
@@ -85,8 +96,11 @@ wujud.addEventListener('change', function() {
 mirror.addEventListener('change', function() {
     changeMirror(mirror.value)
 })
-// pasFoto.addEventListener('click', function() {
-//     // pasFoto.style.border = "3px solid rgba(222, 184, 135, 0.514)"
-//     alert("Oke")
-// })
-console.log(pasFoto)
+pasFoto.addEventListener('click', function() {
+    useBorder()
+})
+const tiluD = function() {
+    for(let i = 0; i < titles.length; i++) {
+        imgs[i].classList.toggle("hilang")
+    }
+}

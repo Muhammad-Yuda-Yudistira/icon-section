@@ -17,7 +17,11 @@
         <h1>Custom your icons here</h1>
         <div class="styling">
             <div class="setting">
-                <input type="checkbox" id="pasFoto">
+                <input type="checkbox" id="3D" onclick="tiluD()">
+                <label for="3D">3D Icons</label>
+            </div>
+            <div class="setting">
+                <input type="checkbox" id="pasFoto" class="pasFoto">
                 <label for="pasFoto">With Frame</label>
             </div>
             <div class="setting">
@@ -56,32 +60,40 @@
             <ul>
                 <li>
                     <a href="#">
-                        <picture data-tilt data-tilt-scale="1.5" data-tilt-glare="true">
+                        <picture data-tilt data-tilt-scale="1.5" data-tilt-glare="true"
+                        data-tilt-max="30">
                             <img src="imgs/outline/beer.svg">
+                            <span class="tiluDIcon"></span>
                             <figcaption></figcaption>
                         </picture>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <picture data-tilt data-tilt-scale="1.5" data-tilt-glare="true">
+                        <picture data-tilt data-tilt-scale="1.5" data-tilt-glare="true"
+                        data-tilt-max="30">
                             <img src="imgs/outline/snack.svg">
+                            <span class="tiluDIcon"></span>
                             <figcaption></figcaption>
                         </picture>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <picture data-tilt data-tilt-scale="1.5" data-tilt-glare="true">
+                        <picture data-tilt data-tilt-scale="1.5" data-tilt-glare="true"
+                        data-tilt-max="30">
                             <img src="imgs/outline/note.svg">
+                            <span class="tiluDIcon"></span>
                             <figcaption></figcaption>
                         </picture>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <picture data-tilt data-tilt-scale="1.5" data-tilt-glare="true">
+                        <picture data-tilt data-tilt-scale="1.5" data-tilt-glare="true"
+                        data-tilt-max="30">
                             <img src="imgs/outline/gift.svg">
+                            <span class="tiluDIcon"></span>
                             <figcaption></figcaption>
                         </picture>
                     </a>
@@ -89,11 +101,53 @@
             </ul>
         </section>
         <footer>&copy Copyright 2016 Beer Bouquet LLC</footer>
+
     </div>
 
     <!-- tilt js -->
     <script type="text/javascript" src="js/vanilla-tilt.min.js"></script>
     <!-- my script -->
     <script src="js/script.js"></script>
+
+    <!-- three js -->
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+
+    <script type="importmap">
+    {
+        "imports": {
+        "three": "https://unpkg.com/three@0.150.1/build/three.module.js"
+        }
+    }
+    </script>
+
+    <script type="module">
+
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three-gltf-loader@0.150.0/index.js';
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    const tiluDIcons = document.querySelector('.tiluDIcon')
+    tiluDIcons.appendChild( renderer.domElement );
+
+
+    const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+    const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+    const cube = new THREE.Mesh( geometry, material );
+    scene.add( cube );
+
+    camera.position.z = 5;
+
+
+    function animate() {
+        requestAnimationFrame( animate );
+        renderer.render( scene, camera );
+    }
+    animate();
+
+    </script>
 </body>
 </html>

@@ -16,7 +16,6 @@ img {
 }
 .container {
     margin: 100px auto;
-    background-color: white;
 }
 .styling {
     display: flex;
@@ -59,6 +58,9 @@ img {
 .icons a:hover img {
     transform: translateZ(25px);
 }
+.icons img.hilang {
+    display: none;
+}
 .icons figcaption {
     font-size: larger;
     opacity:.4;
@@ -73,8 +75,8 @@ img {
     color: burlywood;
 }
 .icons figcaption.badag {
-    text-transform: uppercase;}
-
+    text-transform: uppercase;
+}
 footer {
     color: white;
     font-family: 'Montserrat';

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Samuel Beer
+* source:	https://sketchfab.com/3d-models/samuel-beer-3c6f04b0a330419c9b94e5da6248bb3f
+* author:	TraianDumbrava (https://sketchfab.com/TraianDumbrava)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Samuel Beer" (https://sketchfab.com/3d-models/samuel-beer-3c6f04b0a330419c9b94e5da6248bb3f) by TraianDumbrava (https://sketchfab.com/TraianDumbrava) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
