@@ -15,16 +15,28 @@
 <body>
     <div class="container">
         <nav>
-            <form action="js/login.js">
-                <label for="username">Username</label>
-                <input type="text" id="password">
-                <label for="password">Password</label>
-                <input type="password" id="password">
+            <div class="login">
+                <div class="username">
+                    <label for="username">Username: </label>
+                    <input type="text" id="username">
+                    <span class="ket">username: admin</span>
+                </div>
+                <div class="password">
+                    <label for="password">Password: </label>
+                    <input type="password" id="password">
+                    <span class="ket">password: admin</span>
+                </div>
                 <button type="submit">Login</button>
-            </form>
+            </div>
+            <div class="logout">
+                <button>Logout</button>
+            </div>
         </nav>
-        <h1>Custom your icons here</h1>
+        <h1>Custom your icons here if you login first</h1>
         <div class="styling">
+            <div class="setting">
+                <button class="simpan">Save</button>
+            </div>
             <div class="setting">
                 <input type="checkbox" id="3D" onclick="tiluD()">
                 <label for="3D" class="segel">3D Icons</label>
@@ -111,6 +123,10 @@
         </section>
         <footer>&copy Copyright 2016 Beer Bouquet LLC</footer>
 
+        <section class="tanggal">
+            <h2 class="tBaru"></h2>
+        </section>
+
         <section class="tiluDIcons">
             <span class="item"></span>
             <span class="item"></span>
@@ -122,6 +138,9 @@
 
     <!-- tilt js -->
     <script type="text/javascript" src="js/vanilla-tilt.min.js"></script>
+    <!-- sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- my script -->
     <script src="js/script.js"></script>
     <!-- three js -->
@@ -130,8 +149,9 @@
     <script type="importmap">
     {
         "imports": {
-        "three": "https://unpkg.com/three@0.150.1/build/three.module.js",
-        "controls": "https://unpkg.com/three@0.150.1/examples/jsm/controls/OrbitControls.js"
+        "three": "https://unpkg.com/three@0.140.0/build/three.module.js",
+        "controls": "https://unpkg.com/three@0.140.0/examples/jsm/controls/OrbitControls.js",
+        "loader": "https://unpkg.com/three@0.140.0/examples/jsm/loaders/GLTFLoader.js"
         }
     }
     </script>
@@ -140,6 +160,7 @@
 
     import * as THREE from 'three';
     import { OrbitControls } from 'controls';
+    import { GLTFLoader } from 'loader';
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -158,6 +179,20 @@
     const material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
     const cube = new THREE.Mesh( geometry, material );
     scene.add( cube );
+
+
+    // const loader = new GLTFLoader();
+
+    // loader.load( './imgs/threeD/samuel_beer/scene.gltf', function ( gltf ) {
+
+    //     scene.add( gltf.scene );
+
+    // }, undefined, function ( error ) {
+
+    //     console.error( error );
+
+    // } );
+
 
     const light = new THREE.AmbientLight( 0x404040, 0.5 ); // soft white light
     scene.add( light );

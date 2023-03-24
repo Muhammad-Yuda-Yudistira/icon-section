@@ -15,17 +15,39 @@ h1 {
 img {
     width: 80px;
 }
-nav {
-    text-align: end;
-}
 .container {
     margin: 0px auto;
     overflow:hidden;
 }
+nav {
+    text-align: end;
+}
+.username, .password, button {
+    display: inline-block;
+    position: relative;
+    color: #666;
+}
+.username label, .password label, .login button {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.ket {
+    position: absolute;
+    left: 85px;
+    top: 20px;
+    color: #aaa;
+}
+.logout {
+    display: none;
+}
 .styling {
-    display: flex;
+    /* display: flex; */
+    display: none;
     flex-direction: row;
     justify-content: end;
+    color: #666;
+}
+.setting select, .login input {
+    color: #666;
 }
 .setting {
     margin-right:15px;
@@ -61,6 +83,9 @@ nav {
     padding: 5px;
     transition: .4s;
 }
+.icons picture:hover.sisi {
+    border: 3px solid rgba(222, 184, 135, 0.514);
+}
 .icons picture:hover {
     border: none;
 }
@@ -85,6 +110,9 @@ nav {
 }
 .icons figcaption.badag {
     text-transform: uppercase;
+}
+.tanggal {
+    text-align: center;
 }
 footer {
     color: white;
