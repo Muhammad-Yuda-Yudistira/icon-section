@@ -10,6 +10,9 @@ const mirror = document.querySelector('.mirror')
 const card = document.querySelectorAll('.icons a')
 const pasFoto = document.querySelector('.pasFoto')
 
+const tanggal = document.querySelector('.tanggal')
+const tBaru = document.querySelector('.tBaru')
+
 // login
 const tombol = document.getElementsByTagName('button')[0]
 const login = document.querySelector('.login')
@@ -26,12 +29,42 @@ tombol.addEventListener('click', function() {
         // alert("Login Berhasil!")
         Swal.fire('Login Berhasil!')
 
-        styling.style.display = "flex"
+        if(tBaru.innerHTML == '') {
+            styling.style.display = "flex"
+        } else if(tBaru.innerHTML == 'Can edit icon again now!') {
+            styling.style.display = "flex"
+        }
 
         login.style.display = "none"
         logout.style.display = "block"
 
     }
+
+    // jalankan pilih style icons
+    gaya.addEventListener('change', function() {
+        changeStyling()
+    })
+    warna.addEventListener('change', function() {
+        changeColor()
+    })
+    wujud.addEventListener('change', function() {
+        changeTransform()
+    })
+    mirror.addEventListener('change', function() {
+        changeMirror(mirror.value)
+    })
+    pasFoto.addEventListener('click', function() {
+        useBorder()
+    })
+    const tiluD = function() {
+        for(let i = 0; i < titles.length; i++) {
+            imgs[i].classList.toggle("hilang")
+        }
+    }
+    simpan.addEventListener('click', function() {
+        styling.style.display = "none"
+        hilangSetting()
+    })
 })
 
 // logout
@@ -60,6 +93,7 @@ for(let i = 0; i < titles.length; i++) {
 }
 
 
+// fungsi untuk setting
 const changeStyling = function() {
     for(let i = 0; i < titles.length; i++) {
         // image icons
@@ -112,61 +146,25 @@ const useBorder = function() {
         bingkai[i].classList.toggle('sisi')
     }
 }
+const hilangSetting = function() {
+    let week = new Date().getTime() + 1000 * 60 * 60 * 24 * 7
 
-// jalankan pilih style icons
-gaya.addEventListener('change', function() {
-    changeStyling()
-})
-warna.addEventListener('change', function() {
-    changeColor()
-})
-wujud.addEventListener('change', function() {
-    changeTransform()
-})
-mirror.addEventListener('change', function() {
-    changeMirror(mirror.value)
-})
-pasFoto.addEventListener('click', function() {
-    useBorder()
-})
-const tiluD = function() {
-    for(let i = 0; i < titles.length; i++) {
-        imgs[i].classList.toggle("hilang")
-    }
+    const hitungMundur = setInterval(() => {
+        let sekarang = new Date().getTime()
+        
+        let selisih = week - sekarang
+
+        let day = Math.floor(selisih / (1000 * 60 * 60 * 24))
+        let jam = Math.floor(selisih % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+        let menit = Math.floor(selisih % (1000 * 60 * 60) / (1000 * 60))
+        let detik = Math.floor(selisih % (1000 * 60) / (1000))
+
+        tBaru.innerHTML = 'Time for edit icons: ' + day + ' day ' + jam + ' hour ' + menit + ' minute ' + detik + ' second'
+        if(selisih < 0) {
+            clearInterval(hitungMundur)
+            tBaru.innerHTML = 'Can edit icon again now!'
+            styling.style.display = "flex"
+        }
+    }, 1000);
 }
-simpan.addEventListener('click', function() {
-    styling.style.display = "none"
 
-    const sekarang = new Date().getTime()
-    const week = new Date('Mar 31, 2023 11:22:00').getTime()
-    let selisih = week - sekarang
-
-    let day = Math.floor(selisih / (1000 * 60 * 60 * 24))
-    let jam = Math.floor(selisih % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
-    let menit = Math.floor(selisih % (1000 * 60 * 60) / (1000 * 60))
-    let detik = Math.floor(selisih % (1000 * 60) / (1000))
-    
-})
-
-
-// Hitung mindur
-const tanggal = document.querySelector('.tanggal')
-const tBaru = document.querySelector('.tBaru')
-
-const week = new Date('Mar 31, 2023 11:22:00').getTime()
-
-const hitungMundur = setInterval(() => {
-    const sekarang = new Date().getTime()
-    let selisih = week - sekarang
-
-    let day = Math.floor(selisih / (1000 * 60 * 60 * 24))
-    let jam = Math.floor(selisih % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
-    let menit = Math.floor(selisih % (1000 * 60 * 60) / (1000 * 60))
-    let detik = Math.floor(selisih % (1000 * 60) / (1000))
-
-    tBaru.innerHTML = 'Time for edit icons: ' + day + ' day ' + jam + ' hour ' + menit + ' minute ' + detik + ' second'
-
-    if(selisih == 0) {
-        removeInterval()
-    }
-}, 1000);
